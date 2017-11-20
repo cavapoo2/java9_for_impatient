@@ -16,7 +16,6 @@ public class C1E10 {
         long val2 = r.nextLong();
         C1E10.convert(-val,16);
         C1E10.convert(val2,36);
-        Long.toHexString()
     }
 
     public static void convert(long val, long radix) {
