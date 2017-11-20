@@ -9,12 +9,18 @@ public class C1E11 {
         Scanner in = new Scanner(System.in) ;
         Pattern pattern = Pattern.compile("[^\\x00-\\x7F]"); //match non ascii
         while(in.hasNext()) {
-            Matcher matcher = pattern.matcher(in.nextLine());
-            int i = 0;
+            String line = in.nextLine();
+            Matcher matcher = pattern.matcher(line);
+
             while(matcher.find()){
-                System.out.println("num = " + i + ",matches are "  + matcher.group());
-                i++;
+                System.out.println(matcher.group());
             }
+
+            line.chars().forEach(c -> {
+                if (c >= 128){
+                    System.out.printf("%s \\u%04x\n",Character.toString((char)c),c);
+                }
+            });
         }
     }
 }
