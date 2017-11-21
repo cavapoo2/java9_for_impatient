@@ -7,15 +7,16 @@ import java.util.regex.Pattern;
 public class C1E11 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in) ;
-        Pattern pattern = Pattern.compile("[^\\x00-\\x7F]"); //match non ascii
+       // Pattern pattern = Pattern.compile("[^\\x00-\\x7F]"); //match non ascii
         while(in.hasNext()) {
             String line = in.nextLine();
+            /*
             Matcher matcher = pattern.matcher(line);
 
             while(matcher.find()){
                 System.out.println(matcher.group());
             }
-
+*/
             line.chars().forEach(c -> {
                 if (c >= 128){
                     System.out.printf("%s \\u%04x\n",Character.toString((char)c),c);
