@@ -13,8 +13,14 @@ public class C2E16 {
         System.out.println("Head is " + q.getHead().data + ",last is " + q.getLast().data);
         q.dequeue();
         System.out.println("Head is " + q.getHead().data + ",last is " + q.getLast().data);
-
-
+        Queue.Iterator it = q.getIterator();
+        while(it.hasNext()) {
+            System.out.printf("%d ",it.next().data);
+        }
+        Queue.Iterator an = q.getIterator();
+        while(an.hasNext()) {
+            System.out.printf("%d ",an.next().data);
+        }
     }
 }
 class Queue {
@@ -42,6 +48,7 @@ class Queue {
     }
     Node getHead() { return head; }
     Node getLast() { return last;}
+    Iterator getIterator() { return new Iterator();}
     int getLength(){ return length;}
     class Node {
         Node next = null;
@@ -56,6 +63,18 @@ class Queue {
                 n = n.next;
             }
             n.next = end;
+        }
+    }
+    class Iterator {
+        Node curr = null;
+        Iterator() {
+            curr = head;
+        }
+        boolean hasNext() { return curr != null;}
+        Node next() {
+            Node v = curr;
+            curr = curr.next;
+            return v;
         }
     }
 }
