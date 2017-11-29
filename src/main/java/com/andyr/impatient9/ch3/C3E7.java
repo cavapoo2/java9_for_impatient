@@ -5,11 +5,19 @@ import java.util.function.Consumer;
 
 public class C3E7 {
     public static void main(String[] args) {
+        /*
+        C3E7 obj = new C3E7();
+        obj.UseD();*/
         DigitSequence ds = new DigitSequence(9993156);
         ds.forEachRemaining(x -> System.out.println(x));
     }
+    /*
+    public void UseD() {
+        DigitSequence ds = new DigitSequence(9993156);
+        ds.forEachRemaining(x -> System.out.println(x));
+    }*/
 
-    static class DigitSequence implements Iterator<Integer> {
+    /*private*/ static class DigitSequence implements Iterator<Integer> {
         private Integer num;
         public DigitSequence(int n) {
             num = n;
