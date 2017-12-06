@@ -2,6 +2,7 @@ package com.andyr.impatient9.ch5;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class C5E1 {
    public static void main(String[] args) {
@@ -40,5 +41,19 @@ public class C5E1 {
         }
         return res;
 
+    }
+       //this stops when it encounters an non double
+    public static ArrayList<Double> readValue2(String filename) {
+
+        ArrayList<Double> res = new ArrayList<>();
+        try {
+            Scanner in = new Scanner(new File(filename)); //note need relative path here like src/main/resources/filename
+            while(in.hasNextDouble()) {
+                res.add(in.nextDouble());
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 }
