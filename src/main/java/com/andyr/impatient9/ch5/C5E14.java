@@ -8,8 +8,15 @@ import java.util.logging.Filter;
 
 public class C5E14 {
     public static void main(String[] args) throws IOException {
-        FileHandler fh = new FileHandler("default.log",false   );
-        String[] bannedWords = {"Sex", "Drugs", "C++"};
+        Logger log = setUpLogger(new String[]{"Sex", "Drugs","C++"},"filterTest.log");
+        log.info("Test");
+        log.info("Test Sex");
+        log.info("Something");
+        log.info("C++");
+    }
+
+    static Logger setUpLogger(String[] bannedWords, String logFileName) throws IOException {
+        FileHandler fh = new FileHandler(logFileName,false);
         Filter fil = new Filter() {
             @Override
             public boolean isLoggable(LogRecord lr) {
@@ -20,14 +27,10 @@ public class C5E14 {
                 return true;
             }
         };
+        Logger logger = Logger.getLogger("com.andyr.impatient9.ch5") ;
+        logger.addHandler(fh);
+        logger.setFilter(fil);
+        return logger;
 
-        Logger log  = Logger.getLogger("com.andyr.impatient9.ch5");
-        log.addHandler(fh);
-        log.setFilter(fil);
-
-        log.info("Test");
-        log.info("Test Sex");
-        log.info("Something");
-        log.info("C++");
     }
 }
